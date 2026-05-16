@@ -2,11 +2,15 @@
   "experimentalServices": {
     "frontend": {
       "entrypoint": "frontend",
-      "routePrefix": "/"
+      "routePrefix": "/",
+      "buildCommand": "npm run build",
+      "installCommand": "npm install"
     },
     "backend": {
       "entrypoint": "backend",
-      "routePrefix": "/api"
+      "routePrefix": "/api",
+      "buildCommand": "npm run build",
+      "installCommand": "npm install"
     }
   }
 }
