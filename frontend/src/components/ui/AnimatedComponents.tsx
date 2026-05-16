@@ -8,9 +8,10 @@ interface SectionWrapperProps {
   className?: string;
   delay?: number;
   id?: string;
+  style?: React.CSSProperties;
 }
 
-export function SectionWrapper({ children, className = "", delay = 0, id }: SectionWrapperProps) {
+export function SectionWrapper({ children, className = "", delay = 0, id, style }: SectionWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -34,6 +35,7 @@ export function SectionWrapper({ children, className = "", delay = 0, id }: Sect
       ref={ref}
       id={id}
       className={className}
+      style={style}
       initial="hidden"
       animate={controls}
       variants={{
