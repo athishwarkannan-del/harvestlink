@@ -41,7 +41,8 @@ export default function AssistantCharacter() {
             {(showBubble || isHovered) && (
               <motion.div
                 initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                style={{ originX: 1, originY: 1 }}
+                originX={1}
+                originY={1}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
