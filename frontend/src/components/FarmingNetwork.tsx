@@ -108,7 +108,7 @@ export default function FarmingNetwork() {
           <SectionWrapper delay={0.2} className="relative h-[450px] w-full rounded-3xl" style={{ background: "#fafdf8", border: "1px solid #e4ede0" }}>
             
             {/* Animated SVG Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
               {farmers.length === 0 && connections.map((conn, i) => {
                 const source = nodes.find(n => n.id === conn.source);
                 const target = nodes.find(n => n.id === conn.target);
@@ -117,7 +117,7 @@ export default function FarmingNetwork() {
                 return (
                   <motion.path
                     key={`conn-${i}`}
-                    d={`M ${source.x}% ${source.y}% L ${target.x}% ${target.y}%`}
+                    d={`M ${source.x} ${source.y} L ${target.x} ${target.y}`}
                     stroke="#c8dbbf"
                     strokeWidth="2"
                     strokeDasharray="6 6"
