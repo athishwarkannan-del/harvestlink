@@ -1,4 +1,24 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:3001/api';
+// Self-healing URL sanitizer to handle Vercel env variable variations automatically
+const getSanitizedApiUrl = (): string => {
+  let url = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:3001/api';
+  
+  // 1. Trim whitespace
+  url = url.trim();
+  
+  // 2. Strip trailing slashes
+  while (url.endsWith('/')) {
+    url = url.slice(0, -1);
+  }
+  
+  // 3. Ensure it ends with /api for production routes
+  if (url && !url.endsWith('/api') && (url.startsWith('http://') || url.startsWith('https://'))) {
+    url = `${url}/api`;
+  }
+  
+  return url;
+};
+
+export const API_URL = getSanitizedApiUrl();
 
 interface FetchOptions extends RequestInit {
   token?: string | null;
